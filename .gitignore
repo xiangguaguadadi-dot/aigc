@@ -1,9 +1,17 @@
 .env
 .env.*
 !.env.example
+.venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
 outputs/*.json
 outputs/*.log
+assets/
+drop_images/*
+!drop_images/README.md
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
