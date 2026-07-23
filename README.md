@@ -124,3 +124,13 @@ PYTHONPATH=src python3 -m unittest discover tests/unit
 ## License
 
 This project is released under the MIT License. See [LICENSE](LICENSE).
+
+## 室内视频场景重建
+
+仓库同时保存了 room1 单目室内视频重建的云端执行源码、复现信息和结果摘要：
+
+- [room1-scene-reconstruction](room1-scene-reconstruction/README.md)
+
+该子项目覆盖关键帧筛选、HLoc/COLMAP 相机恢复、MASt3R/DUSt3R 深度先验、
+PlanarGS 优化、TSDF 网格、语义尺度标定以及 Blender/GLB 导出。原始视频、
+模型权重和房间网格未进入 Git 历史。

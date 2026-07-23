@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <title>场景输出的三个可验证量</title>
+  <desc>用统一尺度、相机一致性和实例授权三类指标界定场景输出是否可进入下一阶段。</desc>
+  <style>
+    .title{font:700 38px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#173b4b}
+    .sub{font:400 20px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#63767d}
+    .head{font:700 25px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#173b4b}
+    .value{font:700 40px Arial,sans-serif;fill:#2b6076}
+    .txt{font:400 18px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#435961}
+    .small{font:400 16px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#60737a}
+    .box{stroke-width:2;rx:18}.green{fill:#eaf5ef;stroke:#63a693}.blue{fill:#e9f3f6;stroke:#4d8ba1}.gold{fill:#fbf2df;stroke:#c8953c}
+  </style>
+  <rect width="1600" height="900" fill="#fff"/>
+  <text x="75" y="72" class="title">M3 输出的可验证数据，而不是只看视觉效果</text>
+  <text x="77" y="108" class="sub">将尺度、几何一致性和实例编辑权限拆成可检查的量</text>
+  <line x1="75" y1="132" x2="1525" y2="132" stroke="#b47a21" stroke-width="4"/>
+
+  <g transform="translate(110 230)">
+    <rect width="420" height="300" class="box gold"/>
+    <text x="35" y="57" class="head">统一尺度</text>
+    <text x="35" y="135" class="value">0.70 m</text>
+    <text x="35" y="188" class="txt">沙发左右扶手最外侧</text>
+    <text x="35" y="230" class="small">全局单一相似尺度</text>
+  </g>
+  <g transform="translate(590 230)">
+    <rect width="420" height="300" class="box blue"/>
+    <text x="35" y="57" class="head">相机一致性</text>
+    <text x="35" y="135" class="value">0.82 px</text>
+    <text x="35" y="188" class="txt">主模型平均重投影误差</text>
+    <text x="35" y="230" class="small">211 / 265 帧注册到主模型</text>
+  </g>
+  <g transform="translate(1070 230)">
+    <rect width="420" height="300" class="box green"/>
+    <text x="35" y="57" class="head">实例编辑权限</text>
+    <text x="35" y="135" class="value">0</text>
+    <text x="35" y="188" class="txt">当前明确移除实例数</text>
+    <text x="35" y="230" class="small">M3B 保留全部物体，避免误删</text>
+  </g>
+
+  <line x1="800" y1="530" x2="800" y2="620" stroke="#2b6076" stroke-width="3"/>
+  <polygon points="790,620 810,620 800,638" fill="#2b6076"/>
+  <rect x="390" y="640" width="820" height="115" rx="18" fill="#f3f6f6" stroke="#8ba1a7" stroke-width="2"/>
+  <text x="430" y="687" class="head">可验收条件</text>
+  <text x="430" y="725" class="txt">尺度误差 ≤ 5% · 无明显重影/悬浮面 · 删除必须有明确 instance_id</text>
+  <text x="75" y="835" class="small">该图适合放在实验或 Con&amp;Lim 页，突出当前结果边界，不把未来在线追踪宣传为已完成能力。</text>
+</svg>

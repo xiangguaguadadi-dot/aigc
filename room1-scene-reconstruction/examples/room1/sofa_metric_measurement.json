@@ -1,0 +1,204 @@
+{
+  "frame_count": 7,
+  "raw_points_before_filter": 79713,
+  "raw_points_after_statistical_filter": 76108,
+  "dbscan_cluster_count": 4,
+  "dbscan_largest_cluster_label": 0,
+  "dbscan_largest_cluster_points": 65720,
+  "dbscan_top_cluster_sizes": [
+    65720,
+    9608,
+    580,
+    69
+  ],
+  "selected_masks": {
+    "frame_000186": {
+      "mask_index": 2,
+      "mask_pixels": 101740,
+      "sampled_valid_points": 11353
+    },
+    "frame_000187": {
+      "mask_index": 2,
+      "mask_pixels": 119445,
+      "sampled_valid_points": 13274
+    },
+    "frame_000188": {
+      "mask_index": 2,
+      "mask_pixels": 115540,
+      "sampled_valid_points": 12848
+    },
+    "frame_000189": {
+      "mask_index": 2,
+      "mask_pixels": 104505,
+      "sampled_valid_points": 11608
+    },
+    "frame_000190": {
+      "mask_index": 2,
+      "mask_pixels": 100642,
+      "sampled_valid_points": 11185
+    },
+    "frame_000191": {
+      "mask_index": 2,
+      "mask_pixels": 93708,
+      "sampled_valid_points": 10429
+    },
+    "frame_000192": {
+      "mask_index": 2,
+      "mask_pixels": 81249,
+      "sampled_valid_points": 9016
+    }
+  },
+  "frame_world_stats": {
+    "frame_000186": {
+      "point_count": 11353,
+      "median_world": [
+        -0.061503302954470485,
+        6.150536025389529,
+        -6.874623934903992
+      ],
+      "p01_world": [
+        -4.979376532473836,
+        4.025636564545315,
+        -9.313772378740635
+      ],
+      "p99_world": [
+        1.953075756097106,
+        7.235076995396434,
+        -0.6777145272201149
+      ]
+    },
+    "frame_000187": {
+      "point_count": 13274,
+      "median_world": [
+        0.4490380640396454,
+        6.1105470570660145,
+        -7.124612368749035
+      ],
+      "p01_world": [
+        -3.6547300853093247,
+        3.7902060556316273,
+        -9.206558321505057
+      ],
+      "p99_world": [
+        3.37011817039678,
+        7.230628649275318,
+        -4.482325788557445
+      ]
+    },
+    "frame_000188": {
+      "point_count": 12848,
+      "median_world": [
+        0.474237840112651,
+        6.138931481332964,
+        -7.081139468478373
+      ],
+      "p01_world": [
+        -3.1831179563511625,
+        3.7857055201980594,
+        -9.196583172012705
+      ],
+      "p99_world": [
+        3.386177210711883,
+        7.256212986877453,
+        -5.060001533780557
+      ]
+    },
+    "frame_000189": {
+      "point_count": 11608,
+      "median_world": [
+        0.7013185121010563,
+        6.0672877283253115,
+        -6.9272322927190535
+      ],
+      "p01_world": [
+        -2.2814769720421157,
+        3.772209942577797,
+        -9.437177889704815
+      ],
+      "p99_world": [
+        3.4363019258281633,
+        7.217922487758086,
+        -5.2233839074840125
+      ]
+    },
+    "frame_000190": {
+      "point_count": 11185,
+      "median_world": [
+        0.821145744136385,
+        5.971127703326712,
+        -6.782905066543542
+      ],
+      "p01_world": [
+        -2.693105255650951,
+        3.7380724158915135,
+        -9.598911096883663
+      ],
+      "p99_world": [
+        3.4845454592647336,
+        7.010295192688979,
+        -2.900566810468704
+      ]
+    },
+    "frame_000191": {
+      "point_count": 10429,
+      "median_world": [
+        0.9889361972391786,
+        5.929577952880299,
+        -6.694652607057022
+      ],
+      "p01_world": [
+        -0.8939970143212204,
+        3.639970327337388,
+        -8.732850179897914
+      ],
+      "p99_world": [
+        3.619724071128872,
+        7.269196358963173,
+        -3.8177342479557796
+      ]
+    },
+    "frame_000192": {
+      "point_count": 9016,
+      "median_world": [
+        1.137810397406534,
+        5.683053787412884,
+        -6.6539193986196725
+      ],
+      "p01_world": [
+        -0.17462469742287512,
+        3.6838477403942953,
+        -8.541811377525534
+      ],
+      "p99_world": [
+        3.647783525971335,
+        7.275100585490879,
+        -4.585347822411694
+      ]
+    }
+  },
+  "up_axis_colmap_world": [
+    -0.22799186390346055,
+    -0.9681201383862615,
+    -0.10374539818609697
+  ],
+  "horizontal_pca_axes_colmap_world": [
+    [
+      -0.9681386357867715,
+      0.23674206877332535,
+      -0.08161356976541613
+    ],
+    [
+      -0.10357264064778052,
+      -0.08183269837841103,
+      0.9912497755789678
+    ]
+  ],
+  "horizontal_extent_axis0_colmap_units": 7.046904836483744,
+  "horizontal_extent_axis1_colmap_units": 4.430635500237034,
+  "vertical_extent_colmap_units": 3.2345816977783217,
+  "width_candidate_colmap_units": 7.046904836483744,
+  "cluster_width_candidate_colmap_units": 4.7688594078117035,
+  "cluster_horizontal_extent_axis0_colmap_units": 4.7688594078117035,
+  "cluster_horizontal_extent_axis1_colmap_units": 3.832253000188792,
+  "width_candidate_reason": "larger horizontal PCA extent is the outside armrest-to-armrest axis for this chair view set"
+}

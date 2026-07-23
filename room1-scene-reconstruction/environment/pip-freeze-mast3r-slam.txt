@@ -1,0 +1,134 @@
+absl-py==2.5.0
+annotated-doc==0.0.4
+annotated-types==0.7.0
+anyio==4.14.2
+apsw==3.53.3.1
+argcomplete==3.7.0
+asmk @ file:///root/scene_recon/repos/MASt3R-SLAM/thirdparty/mast3r/asmk
+attrs==26.1.0
+backports.zstd @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_backports.zstd_1781450816/work
+Brotli @ file:///home/conda/feedstock_root/build_artifacts/brotli-split_1764016952863/work
+certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1781719850827/work/certifi
+charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1783505251992/work
+click==8.4.2
+colorama==0.4.6
+colorlog==6.11.0
+contourpy==1.3.3
+curope @ file:///root/scene_recon/repos/MASt3R-SLAM/thirdparty/mast3r/dust3r/croco/models/curope
+cycler==0.12.1
+einops==0.8.2
+embreex==4.4.0
+evo==1.37.0
+faiss-cpu==1.14.3
+fastapi==0.139.2
+filelock @ file:///home/conda/feedstock_root/build_artifacts/filelock_1784531120708/work
+fonttools==4.63.0
+fsspec==2026.6.0
+glcontext==3.0.0
+glfw==2.10.1
+gmpy2 @ file:///home/conda/feedstock_root/build_artifacts/gmpy2_1773244933613/work
+gradio==6.20.0
+gradio_client==2.5.0
+groovy==0.1.2
+grpcio==1.82.1
+h11==0.16.0
+h2 @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_h2_1756364871/work
+hf-gradio==0.4.1
+hf-xet==1.5.2
+hpack @ file:///home/conda/feedstock_root/build_artifacts/hpack_1782283902770/work
+httpcore==1.0.9
+httpx==0.28.1
+huggingface_hub==1.24.0
+hyperframe @ file:///home/conda/feedstock_root/build_artifacts/hyperframe_1737618333194/work
+idna @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_idna_1781620148/work
+imgui @ file:///root/scene_recon/repos/MASt3R-SLAM/thirdparty/in3d/thirdparty/pyimgui
+-e git+https://github.com/rmurai0610/MASt3R-SLAM.git@e6f4e3d474fad0e11f561482012be864ba8c3f17#egg=in3d&subdirectory=thirdparty/in3d
+Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_jinja2_1764517220/work
+joblib==1.5.3
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+kiwisolver==1.5.0
+lietorch @ file:///root/scene_recon/repos/lietorch
+lxml==6.1.1
+lz4==4.4.5
+manifold3d==3.5.2
+mapbox_earcut==2.0.0
+Markdown==3.10.2
+markdown-it-py==4.2.0
+MarkupSafe @ file:///home/conda/feedstock_root/build_artifacts/markupsafe_1772444934960/work
+-e git+https://github.com/rmurai0610/MASt3R-SLAM.git@e6f4e3d474fad0e11f561482012be864ba8c3f17#egg=MAST3R&subdirectory=thirdparty/mast3r
+-e git+https://github.com/rmurai0610/MASt3R-SLAM.git@e6f4e3d474fad0e11f561482012be864ba8c3f17#egg=MAST3R_SLAM
+matplotlib==3.11.1
+mdurl==0.1.2
+moderngl==5.12.0
+moderngl-window==2.4.6
+mpmath==1.3.0
+msgpack==1.2.1
+multipledispatch==1.0.0
+narwhals==2.24.0
+natsort==8.4.0
+networkx @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_networkx_1765215107/work
+numexpr==2.14.2
+numpy==1.26.4
+opencv-python==4.11.0.86
+orjson==3.11.9
+packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1777103621/work
+pandas==3.0.3
+pillow @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_pillow_1782912080/work
+plyfile==1.1.3
+protobuf==7.35.1
+pyaml==26.7.0
+pycollada==0.9.3
+pydantic==2.13.4
+pydantic_core==2.46.4
+pydub==0.25.1
+pyglet==2.1.15
+pyglm==2.8.3
+Pygments==2.20.0
+pyparsing==3.3.2
+pyrealsense2==2.58.3.10794
+pyrr==0.10.3
+PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1733217236728/work
+python-dateutil==2.9.0.post0
+python-multipart==0.0.32
+pytz==2026.2
+PyYAML @ file:///home/conda/feedstock_root/build_artifacts/pyyaml_1770223234623/work
+referencing==0.37.0
+requests @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_requests_1778851103/work
+rich==15.0.0
+roma==1.5.6
+rosbags==0.11.3
+rpds-py==2026.6.3
+rtree==1.4.1
+ruamel.yaml==0.19.1
+safehttpx==0.1.7
+safetensors==0.8.0
+scikit-learn==1.9.0
+scipy==1.17.1
+seaborn==0.13.2
+semantic-version==2.10.0
+shapely==2.1.2
+shellingham==1.5.4
+six==1.17.0
+starlette==1.3.1
+svg.path==7.1
+sympy==1.13.1
+tensorboard==2.21.0
+tensorboard-data-server==0.7.2
+threadpoolctl==3.6.0
+tomlkit==0.14.0
+torch==2.5.1
+torchaudio==2.5.1
+torchvision==0.20.1
+tqdm==4.69.0
+trimesh==4.12.2
+triton==3.1.0
+typer==0.27.0
+typing-inspection==0.4.2
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_typing_extensions_1783002732/work
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1778188571305/work
+uvicorn==0.51.0
+vhacdx==0.0.10
+Werkzeug==3.1.8
+xxhash==3.8.1
+zstandard==0.25.0

@@ -28,3 +28,12 @@ drop_images/*
 /*.tar.gz
 /*.zip
 *.orig
+*.mp4
+*.pth
+*.ckpt
+*.safetensors
+*.glb
+*.ply
+*.tar.xz
+!room1-scene-reconstruction/assets/
+!room1-scene-reconstruction/assets/**

@@ -1,0 +1,31 @@
+{
+  "scene_id": "room1",
+  "anchor": "gray_sofa_outer_armrest_to_outer_armrest",
+  "original_width_colmap_units": 4.7688594078117035,
+  "target_width_m": 0.7,
+  "scale_factor_m_per_colmap_unit": 0.14678562317298643,
+  "calibrated_width_m": 0.7,
+  "relative_error": 0.0,
+  "measurement_source": "/root/scene_recon/outputs/room1/m3_repair_v2/review/sofa_metric_measurement.json",
+  "measurement_cluster_points": 65720,
+  "origin_colmap_world": [
+    -4.985948317560107,
+    2.0535995223530037,
+    -1.4891355943599984
+  ],
+  "x_axis_colmap_world": [
+    -0.968138635786772,
+    0.23674206877332532,
+    -0.08161356976541617
+  ],
+  "y_axis_colmap_world": [
+    0.1035726406477805,
+    0.081832698378411,
+    -0.9912497755789677
+  ],
+  "z_axis_colmap_world": [
+    -0.22799186390346055,
+    -0.9681201383862615,
+    -0.10374539818609697
+  ]
+}

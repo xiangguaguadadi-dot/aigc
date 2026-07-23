@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <title>room1 关键帧筛选与相机注册数据</title>
+  <desc>1393 个原始视频帧经过抽帧和严格筛选，最终 211 帧进入主连通相机模型。</desc>
+  <style>
+    .title{font:700 38px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#173b4b}
+    .sub{font:400 20px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#63767d}
+    .label{font:700 24px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#173b4b}
+    .value{font:700 34px Arial,sans-serif;fill:#173b4b}
+    .small{font:400 17px "Microsoft YaHei","Noto Sans CJK SC",Arial;fill:#60737a}
+    .pct{font:700 20px Arial,sans-serif;fill:#2b6076}
+  </style>
+  <rect width="1600" height="900" fill="#fff"/>
+  <text x="75" y="72" class="title">room1：从原始视频到主连通相机模型</text>
+  <text x="77" y="108" class="sub">增加帧数的同时保留清晰度、视差和同一连通轨迹</text>
+  <line x1="75" y1="132" x2="1525" y2="132" stroke="#b47a21" stroke-width="4"/>
+
+  <g transform="translate(120 210)">
+    <rect width="1320" height="90" rx="18" fill="#dcebf0"/>
+    <text x="34" y="38" class="label">原始视频帧</text>
+    <text x="1090" y="59" class="value">1393</text>
+    <text x="1195" y="56" class="small">100%</text>
+  </g>
+  <line x1="780" y1="300" x2="780" y2="342" stroke="#2b6076" stroke-width="3"/>
+  <polygon points="770,342 790,342 780,360" fill="#2b6076"/>
+
+  <g transform="translate(240 360)">
+    <rect width="1080" height="90" rx="18" fill="#c9e3e2"/>
+    <text x="34" y="38" class="label">6 fps 候选帧</text>
+    <text x="850" y="59" class="value">279</text>
+    <text x="950" y="56" class="pct">20.0%</text>
+  </g>
+  <line x1="780" y1="450" x2="780" y2="492" stroke="#2b6076" stroke-width="3"/>
+  <polygon points="770,492 790,492 780,510" fill="#2b6076"/>
+
+  <g transform="translate(330 510)">
+    <rect width="900" height="90" rx="18" fill="#b9d9cd"/>
+    <text x="34" y="38" class="label">严格关键帧</text>
+    <text x="670" y="59" class="value">265</text>
+    <text x="765" y="56" class="pct">19.0%</text>
+  </g>
+  <line x1="780" y1="600" x2="780" y2="642" stroke="#2b6076" stroke-width="3"/>
+  <polygon points="770,642 790,642 780,660" fill="#2b6076"/>
+
+  <g transform="translate(435 660)">
+    <rect width="690" height="90" rx="18" fill="#f4dfb5"/>
+    <text x="34" y="38" class="label">主连通注册帧</text>
+    <text x="475" y="59" class="value">211</text>
+    <text x="570" y="56" class="pct">79.6%*</text>
+  </g>
+  <text x="120" y="815" class="small">* 注册率以严格关键帧为分母：211 / 265；其余 54 帧未进入主连通模型，不强行拼接小模型。</text>
+  <text x="120" y="850" class="small">质量指标：主模型平均重投影误差 0.82 px，平均轨迹长度 4.83。</text>
+</svg>
