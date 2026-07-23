@@ -1,0 +1,14 @@
+build
+.venv
+__pycache__
+*.pyc
+*.egg-info
+.ipynb_checkpoints
+outputs/
+datasets/*
+!datasets/sacre_coeur/
+datasets/sacre_coeur/query
+Untitled.ipynb
+untitled.py
+try.mp4
+my_desk_localization
