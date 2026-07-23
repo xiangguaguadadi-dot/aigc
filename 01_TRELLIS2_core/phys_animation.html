@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Physics Animation</title>
+<style>body{margin:0;background:#1a1a2e;display:flex;justify-content:center;align-items:center;height:100vh}
+canvas{width:800px;height:600px}</style></head><body>
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x1a1a2e);
+scene.add(new THREE.AmbientLight(0xffffff,0.6));
+const dl=new THREE.DirectionalLight(0xffffff,1);dl.position.set(5,10,5);scene.add(dl);
+scene.add(new THREE.GridHelper(3,20,0x444444,0x333333));
+
+const camera=new THREE.PerspectiveCamera(45,800/600,0.1,20);camera.position.set(2,1.5,3);
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setSize(800,600);
+renderer.shadowMap.enabled=true;document.body.appendChild(renderer.domElement);
+new OrbitControls(camera,renderer.domElement);
+
+const frameCount=30;const frames=[];const loader=new GLTFLoader();
+let loaded=0;let currentMesh=null;
+for(let i=0;i<frameCount;i++){
+    loader.load(`phys_frames/frame_${String(i).padStart(4,'0')}.glb`,gltf=>{
+        frames[i]=gltf.scene.children[0].geometry.clone();
+        loaded++;
+    },undefined,()=>{});
+}
+
+// Wait for all to load then animate
+let frame=0;
+function checkStart(){
+    if(loaded<frameCount-1){requestAnimationFrame(checkStart);return}
+    const mat=new THREE.MeshStandardMaterial({color:0xe04020,roughness:0.5,metalness:0});
+    currentMesh=new THREE.Mesh(frames[0],mat);scene.add(currentMesh);animate();
+}
+function animate(){
+    requestAnimationFrame(animate);
+    if(currentMesh&&frames[frame])currentMesh.geometry=frames[frame];
+    frame=(frame+1)%frameCount;
+    renderer.render(scene,camera);
+}
+checkStart();
+</script></body></html>

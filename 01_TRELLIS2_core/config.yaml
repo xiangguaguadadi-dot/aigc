@@ -1,0 +1,49 @@
+# ============================================================
+# TRELLIS.2 → 3D Physics Pipeline Configuration
+# ============================================================
+
+# --- TRELLIS.2 (Image → 3D Mesh) ---
+trellis:
+  repo: "https://github.com/microsoft/TRELLIS.2.git"
+  resolution: 512           # 512 | 1024 (1024 needs 80GB VRAM)
+  steps: 12                 # sampling steps (fewer = faster)
+  pbr: true                 # PBR texture export
+  remove_background: true   # auto-remove image background
+  cache_dir: "~/.cache/trellis2"
+
+# --- Module 1: Perception ---
+perception:
+  detector: "owlvit"        # owlvit | groundingdino
+  detector_threshold: 0.15
+  sam_checkpoint: "pipeline/module1_perception/weights/sam_vit_h_4b8939.pth"
+  default_prompt: "chair . table . sofa . cup . book . laptop . bottle"
+
+# --- Module 2: Reconstruction ---
+reconstruction:
+  method: "poisson"         # poisson | alpha_shape
+  depth: 9                  # octree depth (8-10)
+  min_points: 200
+  normalize: true           # center at origin, unit scale
+
+# --- Module 3: Physics ---
+physics:
+  use_clip: true            # CLIP material classification
+  material_map: {}          # manual overrides: {"table": "wood", "cup": "ceramic"}
+
+# --- Module 4: Simulation ---
+simulation:
+  engine: "pybullet"        # pybullet (more coming)
+  settle_time: 3.0          # seconds
+  gravity: -9.81
+  ground_height: -2.0
+
+# --- Module 5: Interaction ---
+interaction:
+  gui: false
+  max_grasp_force: 500.0
+  throw_speed: 5.0
+
+# --- Global ---
+output_dir: "./output"
+hf_endpoint: "https://hf-mirror.com"  # for China users
+device: "cuda"

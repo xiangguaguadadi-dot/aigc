@@ -1,0 +1,4 @@
+tripo3d
+blenderproc
+opencv-python
+Pillow
