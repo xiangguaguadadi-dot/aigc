@@ -1,0 +1,5 @@
+D:\Anaconda_envs\envs\x\python.exe -m simulation.scripts.launch_live_interaction `
+  --object "generate_3Dmodel\generate_3Dmodel\output_apple.glb" `
+  --object-scale 0.06 `
+  --object-mass 0.18 `
+  --object-friction 0.6

@@ -1,16 +1,32 @@
+# Environment
 .env
 .env.*
-!.env.example
 .venv/
+venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .mypy_cache/
-outputs/*.json
-outputs/*.log
+
+# Outputs
+outputs/
+
+# Input videos
+videos/
+
+# Assets
 assets/
 drop_images/*
 !drop_images/README.md
+
+# Large models / weights
+*.ckpt
+*.bin
+*.onnx
+*.pth
+*.pt
+
+# Images (root level only)
 /*.png
 /*.jpg
 /*.jpeg

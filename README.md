@@ -1,122 +1,92 @@
-# Physical Modeling Agent
+# Video-to-3D Mesh Pipeline
 
-目标：构建一条“图片与问题 -> 物理模型 -> 仿真 -> 检查与修正”的 MVP 链路。
+手机环绕物体拍一段视频 → 输出可用于物理仿真的 3D 网格（GLB 格式）。
 
-## 图片到 Blender 视觉资产
-
-当前开源视觉资产链路为：
-
-```text
-单物体图片
-→ rembg 去背景
-→ TripoSR 生成三维网格
-→ Blender 后台标准化
-→ GLB 往返验证
-→ 预览图和资产清单
-```
-
-### 拖拽运行（macOS）
-
-1. 把一张单主体图片拖入 `drop_images/`。
-2. 在 Finder 中双击仓库根目录的 `run_image_to_3d.command`。
-3. 等待终端显示生成成功。
-4. Blender 会自动打开生成的三维模型。
-
-脚本会为每次运行创建带时间戳的资产 ID，不覆盖已有资产。
-
-如果 macOS 首次阻止运行，在 Finder 中右键 `run_image_to_3d.command`，选择“打开”，再确认一次。不要关闭生成过程中出现的终端窗口。
-
-终端中也可以直接调用拖拽启动器：
+## 快速开始
 
 ```bash
-./run_image_to_3d.command path/to/object.png
+conda activate x
+python -m video_to_3d.scripts.run_video_to_3d --video 你的视频.mp4
 ```
 
-在仓库根目录运行：
+第一次运行会自动下载 DepthAnythingV2 模型（约 90MB）。
+
+## 示例
 
 ```bash
-.venv/bin/python scripts/run_visual_asset_pipeline.py \
-  --image lounge-pug-josephine-sofa-beads-cushion-pompon-aegean-blue_LPJOSOFAPPAG_01_550x550.webp \
-  --asset-id josephine_sofa_test
+# 基本
+python -m video_to_3d.scripts.run_video_to_3d --video chair.mp4
+
+# 8 帧，强制覆盖
+python -m video_to_3d.scripts.run_video_to_3d --video chair.mp4 --frames 8 --force
+
+# 自定义资产 ID
+python -m video_to_3d.scripts.run_video_to_3d --video chair.mp4 --asset-id my_chair_001
 ```
 
-成功后结果位于：
+## 参数
 
-```text
-assets/josephine_sofa_test/
-├── source/                 # 原图副本
-├── preprocessed/           # 去背景结果和模型输入
-├── generated/raw.glb       # TripoSR 原始输出
-├── blender/normalized.blend
-├── export/josephine_sofa_test.glb
-├── preview/preview.png
-├── logs/
-└── asset_manifest.json
+| 参数 | 说明 | 默认 |
+|---|---|---|
+| `--video` / `-i` | 输入视频路径 | 必填 |
+| `--frames` / `-n` | 关键帧数量 | 6 |
+| `--asset-id` / `-a` | 资产 ID（自动生成） | auto |
+| `--output-root` / `-o` | 输出根目录 | `outputs/` |
+| `--force` / `-f` | 覆盖已有输出 | 否 |
+| `--target-faces` | 目标网格面数 | 50000 |
+| `--verbose` / `-v` | 详细日志 | 否 |
+| `--compare-triposr` | 与 TripoSR 比较 | 否 |
+
+## 拍摄建议
+
+- 物体放在桌面或地面，背景简单
+- 手机平稳环绕物体走 **半圈以上**（180°-360°）
+- 光线均匀，避免强烈阴影
+- 视频长度 10-30 秒
+- 不要快速移动手机，避免运动模糊
+
+## 输出
+
+```
+outputs/<session_id>/
+├── export/<session_id>.glb      # 最终 3D 网格
+├── preview/preview.png          # 预览图
+└── asset_manifest.json          # 资产清单
 ```
 
-默认行为：
+## 环境要求
 
-- 自动选择 CUDA、MPS 或 CPU；
-- Apple MPS 负责神经网络推理，marching-cubes 自动在 CPU 执行；
-- 使用 `128` 网格分辨率验证链路；
-- 对 TripoSR 输出应用 `X=-90°` 的 Blender 轴修正；
-- 不推测真实物理尺寸；
-- 如果资产目录已经存在则停止，不会静默覆盖。
+- Windows 11
+- Conda 环境 `x`（Python 3.10）
+- Blender 4.5（已安装）
+- 不需要 GPU
 
-重新生成同一个资产时显式使用：
+## 技术路线
 
-```bash
-.venv/bin/python scripts/run_visual_asset_pipeline.py \
-  --image path/to/object.png \
-  --asset-id object_001 \
-  --force
+多视角深度融合管线，参考 D4RT 思路：
+
+```
+视频 → 帧提取 → 背景去除 → SIFT 相机估计 → DepthAnythingV2 深度 → 点云融合 → Poisson 表面重建 → Blender 标准化 → GLB
 ```
 
-常用参数：
+## 项目文档
 
-```text
---device cpu|mps|cuda|auto
---mc-resolution 128
---chunk-size 4096
---foreground-ratio 0.85
---rotate-x-degrees -90
---output-root assets
+- 视频转 3D 总体说明：[CLAUDE.md](CLAUDE.md)
+- PyBullet + Blender 实时机器人交互：[simulation/LIVE_INTERACTION.md](simulation/LIVE_INTERACTION.md)
+
+## 自动多物体交互
+
+将合并的未知 GLB 自动拆分为独立物理实体并启动 Blender 实时交互：
+
+```powershell
+python -m simulation.scripts.prepare_interactive_scene `
+  --input scene.glb `
+  --output outputs\prepared_scene `
+  --target-max-dimension 1.0
+
+python -m simulation.scripts.launch_live_interaction `
+  --scene-profile floor `
+  --scene-manifest outputs\prepared_scene\scene_manifest.json
 ```
 
-可以通过 `TRIPOSR_SOURCE`、`TRIPOSR_MODEL_DIR` 和 `BLENDER_BIN` 环境变量覆盖本机安装路径。输入必须是单主体图片；最终 GLB 是视觉资产，不能直接作为碰撞体或质量计算网格。
-
-当前先完成第一步：通过 VLM API 把单物体图片和自然语言问题解析成受约束的
-`Physical Model Card` JSON。
-
-## VLM API 配置
-
-本项目默认使用 OpenAI-compatible Chat Completions 接口：
-
-- `VLM_API_URL`: `https://token.matpool.com/v1/chat/completions`
-- `VLM_MODEL`: `Qwen3-VL-Flash`
-- `VLM_API_KEY`: 你的 API key
-
-`.env.example` 给出了变量名。真实 key 不应提交到 git。
-CLI 会自动读取 `.env.local` 或 `.env` 中的这些变量。
-
-## 运行 VLM 解析
-
-```bash
-export VLM_API_KEY="your_api_key"
-export VLM_API_URL="https://token.matpool.com/v1/chat/completions"
-export VLM_MODEL="Qwen3-VL-Flash"
-
-python3 scripts/run_vlm_parse.py \
-  --image examples/ball_on_slope/example.png \
-  --question "球从斜面上释放后会怎样运动？" \
-  --context "球的直径约为 20 cm" \
-  --output outputs/physical_model_card.json
-```
-
-输出 JSON 会经过本地校验，确保模型类别、几何、参数范围等满足第一版 MVP 的约束。
-
-## 测试
-
-```bash
-PYTHONPATH=src python3 -m unittest discover tests/unit
-```
+预处理结果包含物体尺寸、质量/摩擦估计区间、来源和置信度。Blender 的 `Active Object` 选择决定当前操作对象，动作是否允许仍由 PyBullet 几何、受力和可达性检查决定。
