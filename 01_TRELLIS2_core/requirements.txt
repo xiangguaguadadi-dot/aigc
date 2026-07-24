@@ -1,0 +1,40 @@
+# ============================================================
+# TRELLIS.2 → 3D Physics Pipeline
+# ============================================================
+
+# --- Core ---
+torch>=2.3.0
+torchvision>=0.16.0
+numpy>=1.24.0
+Pillow>=10.0.0
+
+# --- TRELLIS.2 ---
+xformers>=0.0.22
+trimesh>=4.0.0
+pygltflib>=1.16.0
+opencv-python>=4.8.0
+scipy>=1.10.0
+ninja
+accelerate
+transformers>=4.44.0
+huggingface_hub>=0.20.0
+jaxtyping
+einops
+loguru
+tqdm
+rembg
+OpenEXR
+
+# --- Pipeline Modules ---
+open3d>=0.18.0
+pybullet>=3.2.5
+segment-anything
+timm
+yapf
+supervision
+omegaconf
+hydra-core
+matplotlib>=3.7.0
+
+# --- App ---
+gradio>=4.0.0

@@ -1,33 +1,64 @@
-# Environment
-.env
-.env.*
-.venv/
-venv/
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
 .pytest_cache/
 .mypy_cache/
 
-# Outputs
+# Virtual environments
+.venv/
+venv/
+env/
+.conda/
+
+# IDE and OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+.ipynb_checkpoints/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Generated outputs and local inputs
 outputs/
-
-# Input videos
 videos/
-
-# Assets
 assets/
 drop_images/*
 !drop_images/README.md
 
-# Large models / weights
+# Large models and weights
 *.ckpt
 *.bin
 *.onnx
 *.pth
 *.pt
 
-# Images (root level only)
+# Root-level generated images
 /*.png
 /*.jpg
 /*.jpeg
 /*.webp
+
+# Local upstream checkouts and tool state
+generate_3Dmodel/generate_3Dmodel/.claude/
+generate_3Dmodel/generate_3Dmodel/TRELLIS.2/
+generate_3Dmodel/generate_3Dmodel/release/
