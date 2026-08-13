@@ -1,0 +1,16 @@
+seed: 42
+image_size: 512
+methods: [prior, lighting_only, unbounded_pbr_light, bounded_pbr_light]
+optimization:
+  steps: 100
+  learning_rate: 0.02
+  log_every: 10
+  epsilon_base_color: 0.15
+  epsilon_metallic: 0.20
+  epsilon_roughness: 0.20
+  weights:
+    rgb: 1.0
+    prior: 0.08
+    tv: 0.02
+    light_energy: 0.01
+    white_balance: 0.01

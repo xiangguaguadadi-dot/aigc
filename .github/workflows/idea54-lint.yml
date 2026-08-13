@@ -1,0 +1,25 @@
+name: idea54-lint
+
+on:
+  push:
+    paths:
+      - "idea54-pbr-inverse-rendering/**"
+      - ".github/workflows/idea54-lint.yml"
+  pull_request:
+    paths:
+      - "idea54-pbr-inverse-rendering/**"
+      - ".github/workflows/idea54-lint.yml"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: idea54-pbr-inverse-rendering
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff
+      - run: ruff check .

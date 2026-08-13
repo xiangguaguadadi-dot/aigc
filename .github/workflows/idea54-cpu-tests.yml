@@ -1,0 +1,27 @@
+name: idea54-cpu-tests
+
+on:
+  push:
+    paths:
+      - "idea54-pbr-inverse-rendering/**"
+      - ".github/workflows/idea54-cpu-tests.yml"
+  pull_request:
+    paths:
+      - "idea54-pbr-inverse-rendering/**"
+      - ".github/workflows/idea54-cpu-tests.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: idea54-pbr-inverse-rendering
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: idea54-pbr-inverse-rendering/pyproject.toml
+      - run: pip install -e .[dev]
+      - run: pytest -m "not gpu"
