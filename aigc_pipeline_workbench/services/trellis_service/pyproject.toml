@@ -1,0 +1,31 @@
+[project]
+name = "trellis-gpu-service"
+version = "1.0.0"
+description = "TRELLIS.2 Image-to-3D GPU Service — Contract v1 compliant"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.115.0",
+  "httpx>=0.28.1",
+  "pydantic>=2.8.0",
+  "pydantic-settings>=2.4.0",
+  "python-multipart>=0.0.9",
+  "uvicorn>=0.30.0",
+  "torch>=2.3.0",
+  "torchvision>=0.16.0",
+  "numpy>=1.24.0",
+  "Pillow>=10.0.0",
+  "trellis2 @ git+https://github.com/microsoft/TRELLIS.2.git",
+  "OpenEXR",
+  "xformers>=0.0.22",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3.0",
+  "mypy>=1.11.0",
+  "pytest-asyncio>=1.2.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
