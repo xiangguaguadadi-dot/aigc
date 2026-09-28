@@ -107,9 +107,47 @@ python -m simulation.scripts.launch_live_interaction `
 - Blender 实时交互已针对 Blender 4.5 验证。
 - 模型权重、运行输出和本地环境文件不提交到 Git。
 
+## AIGC Pipeline Workbench
+
+`aigc_pipeline_workbench/` 是一个面向 AIGC 3D 资产生成与物理交互流程的可视化调试工作台，用于建立最小但正确的远程 GPU 微服务调试闭环：注册算法服务 -> 查看 health / capabilities -> 选择输入 artifact -> 修改参数 -> 提交异步 Job -> 观察状态、进度和日志 -> 查看输出 artifact -> 取消或重新运行。
+
+架构分层：
+
+```text
+Frontend Debugger
+-> Main Backend / Orchestrator
+-> Remote GPU Microservices
+-> Artifact / Object Storage
+```
+
+核心边界：Frontend 只与 Main Backend 通信；Main Backend 是 Control Plane，不执行模型推理；GPU Microservice 是 Compute Plane，独立部署在云端或本地 GPU 环境；算法步骤的基本执行单元是远程异步 `Job`；Artifact Store 是服务之间交换大文件的枢纽，服务之间传递 `artifact_id`、URL 和 metadata，不传递内部文件路径。
+
+目录结构：
+
+```text
+aigc_pipeline_workbench/
+|-- backend/                # Python + FastAPI 控制面（Contract v1、ArtifactStore、Service Registry、Job Manager、Public API）
+|-- mock_services/          # mock-fast / mock-slow 两个独立 GPU Service 调试服务
+|-- frontend/               # TypeScript + React + Vite + Three.js 单模块调试工作台
+|-- services/trellis_service/ # TRELLIS GPU 服务脚手架，统一 /v1 HTTP 协议
+|-- docs/                   # 架构基线、各阶段验收报告与实现记录
+`-- scripts/                # Phase 6 HTTP e2e 与冒烟脚本
+```
+
+技术栈：
+
+| 层 | 技术 |
+| --- | --- |
+| Frontend | TypeScript + React + Vite + Three.js |
+| Main Backend | Python + FastAPI |
+| State Store | SQLite |
+| GPU Microservices | Python / CUDA 服务，统一 `/v1` HTTP 协议 |
+| Artifact Store | 第一阶段 LocalArtifactStore，后续可替换为 S3 / MinIO |
+
 ## 相关文档
 
 - [项目开发说明](CLAUDE.md)
 - [机器人实时交互](simulation/LIVE_INTERACTION.md)
 - [TRELLIS2 服务端部署](01_TRELLIS2_core/docs/SETUP_SERVER.md)
 - [TRELLIS2](https://github.com/microsoft/TRELLIS)
+- [AIGC Pipeline Workbench 说明](aigc_pipeline_workbench/README.md)
